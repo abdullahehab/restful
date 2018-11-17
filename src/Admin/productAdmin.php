@@ -23,24 +23,26 @@ class productAdmin extends AbstractAdmin
         $formMapper->add('description', TextareaType::class);
     }
 
-    protected function configureDatagridFilters(DatagridMapper $datagridMapper)
+/*    protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper->add('name');
         $datagridMapper->add('price');
 
-    }
+    }*/
 
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper->addIdentifier('name', TextareaType::class);
-        $listMapper->add('description', TextareaType::class);
-        $listMapper->add('price', TextareaType::class);
+        $listMapper->addIdentifier('price', TextareaType::class);
+        $listMapper->addIdentifier('description', TextareaType::class);
 
     }
 
     public function toString($object)
     {
-        $object instanceof Product ? $object->getName() : 'Product' ;
+        return $object instanceof Product
+            ? $object->getName()
+            : 'Product'; // shown in the breadcrumb on the create view
     }
 
 
