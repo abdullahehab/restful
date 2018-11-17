@@ -33,12 +33,12 @@ class articleAdmin extends AbstractAdmin
     {
         $listMapper->addIdentifier('name', TextareaType::class);
         $listMapper->add('description', TextareaType::class);
-        $listMapper->add('price', TextareaType::class);
     }
 
     public function toString($object)
     {
-        $object instanceof Article ? $object->getName() : 'Article' ;
+        return $object instanceof Article
+            ? $object->getName()
+            : 'Atricle'; // shown in the breadcrumb on the create view
     }
-
 }
