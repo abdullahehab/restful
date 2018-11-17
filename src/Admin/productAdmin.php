@@ -9,32 +9,60 @@
 namespace App\Admin;
 
 use App\Entity\Product;
+use App\Entity\Category;
 use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Form\FormMapper;
+use Sonata\AdminBundle\Form\Type\ModelType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
+
 class productAdmin extends AbstractAdmin
 {
     protected function configureFormFields(FormMapper $formMapper)
     {
-        $formMapper->add('name', TextareaType::class);
-        $formMapper->add('price', TextareaType::class);
-        $formMapper->add('description', TextareaType::class);
+        $formMapper
+            ->with('Content')
+                ->add('name', TextareaType::class)
+                ->add('price', TextareaType::class)
+                ->add('description', TextareaType::class)
+            ->end()
+
+            ->with('Category')
+                ->add('category', ModelType::class, [
+                    'class' => Category::class,
+                    'property' => 'name',
+                ])
+            ->end();
     }
 
-/*    protected function configureDatagridFilters(DatagridMapper $datagridMapper)
-    {
-        $datagridMapper->add('name');
-        $datagridMapper->add('price');
 
-    }*/
+        protected function configureDatagridFilters(DatagridMapper $datagridMapper)
+        {
+            $datagridMapper
+
+                ->add('name')
+                ->add('price')
+                ->add('category', null, [], EntityType::class, [
+                    'class'    => Category::class,
+                    'choice_label' => 'name',
+        ]);
+
+        }
 
     protected function configureListFields(ListMapper $listMapper)
     {
-        $listMapper->addIdentifier('name', TextareaType::class);
-        $listMapper->addIdentifier('price', TextareaType::class);
-        $listMapper->addIdentifier('description', TextareaType::class);
+
+        $listMapper
+            ->addIdentifier('name', TextareaType::class)
+            ->add('price', TextareaType::class)
+            ->add('description', TextareaType::class)
+            ->add('category', EntityType::class, [
+                'class' => Category::class,
+                'property' => 'name'
+            ]);
+
 
     }
 
