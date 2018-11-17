@@ -31,6 +31,7 @@ class Product
      */
     private $description;
 
+
     public function getId()
     {
         return $this->id;
@@ -71,4 +72,5 @@ class Product
 
         return $this;
     }
+
 }
