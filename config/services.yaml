@@ -23,6 +23,13 @@ services:
             - { name: sonata.admin, manager_type: orm, label: Product }
         public: true
 
+    admin.category:
+        class: App\Admin\categoryAdmin
+        arguments: [~, App\Entity\Category, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Category }
+        public: true
+
 
 
     # default configuration for services in *this* file
