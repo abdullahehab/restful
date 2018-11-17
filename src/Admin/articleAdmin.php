@@ -33,6 +33,7 @@ class articleAdmin extends AbstractAdmin
     {
         $listMapper->addIdentifier('name', TextareaType::class);
         $listMapper->add('description', TextareaType::class);
+        $listMapper->add('price', TextareaType::class);
     }
 
     public function toString($object)
