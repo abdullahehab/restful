@@ -22,10 +22,11 @@ class Tags
     private $name;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Task", inversedBy="tagsTask")
+     * @var Task
+     * @ORM\ManyToOne(targetEntity="App\Entity\Task", inversedBy="tags")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $taskTag;
+    private $task;
 
     public function getId(): ?int
     {
@@ -44,15 +45,24 @@ class Tags
         return $this;
     }
 
-    public function getTaskTag(): ?Task
+    /**
+     * @return mixed
+     */
+    public function getTask()
     {
-        return $this->taskTag;
+        return $this->task;
     }
 
-    public function setTaskTag(?Task $taskTag): self
+    /**
+     * @param mixed $task
+     */
+    public function setTask($task)
     {
-        $this->taskTag = $taskTag;
+        $this->task = $task;
+    }
 
-        return $this;
+    public function __toString()
+    {
+        return $this->getName();
     }
 }
