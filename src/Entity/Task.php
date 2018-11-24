@@ -60,12 +60,6 @@ class Task
         return $this->tags;
     }
 
-    public function setTags(string $tags): self
-    {
-        $this->tags = $tags;
-
-        return $this;
-    }
 
     /**
      * @return Collection|Tags[]
