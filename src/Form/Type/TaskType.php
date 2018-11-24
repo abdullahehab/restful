@@ -24,6 +24,7 @@ class TaskType extends AbstractType
         $builder->add('tags', CollectionType::class, array(
             'entry_type' => TagType::class,
             'entry_options' => array('label' => false),
+            'allow_add' => true,
         ));
     }
 
@@ -33,6 +34,8 @@ class TaskType extends AbstractType
             'data_class' => Task::class,
         ));
     }
+
+
 
 
 }
