@@ -18,11 +18,7 @@ use Symfony\Component\HttpFoundation\Request;
 
 class TaskController extends AbstractController
 {
-    /**
-     * Class TaskController
-     * @package App\Controller
-     * @Route("/task")
-     */
+
     public function new(Request $request){
         $task = new Task();
         $task->getTags();
