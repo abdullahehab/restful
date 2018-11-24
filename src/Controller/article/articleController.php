@@ -59,7 +59,8 @@ class articleController extends FOSRestController
 
     /**
      * show specific Article
-     * @param $id
+     * @param $articleId
+     * @return View
      * @Rest\Get("/articles/{articleId}")
      */
 
@@ -80,7 +81,7 @@ class articleController extends FOSRestController
 
     /**
      * Update Article
-     * @param $id
+     * @param $articleId
      * @param Request $request
      * @Rest\Put("/articles/{articleId}")
      */

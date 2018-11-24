@@ -1,10 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "cdfd5649bfaa24871f93133c8b0bbe51",
+    "content-hash": "c677d3ab942872e3e9c22e4c9d7b960c",
     "packages": [
         {
             "name": "cocur/slugify",
@@ -2703,16 +2703,16 @@
         },
         {
             "name": "sonata-project/admin-bundle",
-            "version": "3.40.3",
+            "version": "3.41.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataAdminBundle.git",
-                "reference": "e82a5e4513ab9c4bfdf325ec188a38ab37aadcdd"
+                "reference": "4124620fd655629be6d60c384b0b058c871c60fd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataAdminBundle/zipball/e82a5e4513ab9c4bfdf325ec188a38ab37aadcdd",
-                "reference": "e82a5e4513ab9c4bfdf325ec188a38ab37aadcdd",
+                "url": "https://api.github.com/repos/sonata-project/SonataAdminBundle/zipball/4124620fd655629be6d60c384b0b058c871c60fd",
+                "reference": "4124620fd655629be6d60c384b0b058c871c60fd",
                 "shasum": ""
             },
             "require": {
@@ -2804,7 +2804,7 @@
                 "bootstrap",
                 "sonata"
             ],
-            "time": "2018-11-10T12:39:28+00:00"
+            "time": "2018-11-23T18:51:42+00:00"
         },
         {
             "name": "sonata-project/block-bundle",
