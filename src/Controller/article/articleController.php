@@ -103,7 +103,6 @@ class articleController extends FOSRestController
     }
 
     /**
-     *
      * @Rest\Delete("/articles/{articleId}")
      * @param $articleId
      *
