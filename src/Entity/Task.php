@@ -23,19 +23,23 @@ class Task
      */
     private $description;
 
+
+//    /**
+//     * @ORM\OneToMany(targetEntity="App\Entity\Tags", mappedBy="taskTag", orphanRemoval=true)
+//     */
+//    private $tagsTask;
+//
+
     /**
-     * @ORM\Column(type="string", length=200)
+     * @var ArrayCollection
+     *
+     * @ORM\OneToMany(targetEntity="App\Entity\Tags", mappedBy="task", orphanRemoval=true,cascade={"persist"})
      */
     private $tags;
 
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Tags", mappedBy="taskTag", orphanRemoval=true)
-     */
-    private $tagsTask;
-
     public function __construct()
     {
-        $this->tagsTask = new ArrayCollection();
+        $this->tags = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -55,40 +59,69 @@ class Task
         return $this;
     }
 
-    public function getTags(): ?string
+    /**
+     * @return ArrayCollection
+     */
+    public function getTags()
     {
         return $this->tags;
     }
 
+    public function addTag(Tags $tags)
+    {
+        $this->tags[] = $tags;
+    }
 
     /**
-     * @return Collection|Tags[]
+     * @param ArrayCollection $tags
      */
-    public function getTagsTask(): Collection
+    public function setTags(?ArrayCollection $tags)
     {
-        return $this->tagsTask;
+        $this->tags = $tags;
     }
 
-    public function addTagsTask(Tags $tagsTask): self
+    public function __toString()
     {
-        if (!$this->tagsTask->contains($tagsTask)) {
-            $this->tagsTask[] = $tagsTask;
-            $tagsTask->setTaskTag($this);
-        }
-
-        return $this;
+        return $this->getDescription();
     }
 
-    public function removeTagsTask(Tags $tagsTask): self
-    {
-        if ($this->tagsTask->contains($tagsTask)) {
-            $this->tagsTask->removeElement($tagsTask);
-            // set the owning side to null (unless already changed)
-            if ($tagsTask->getTaskTag() === $this) {
-                $tagsTask->setTaskTag(null);
-            }
-        }
+//    public function getTags(): ?string
+//    {
+//        return $this->tags;
+//    }
+//
+//
+//    /**
+//     * @return Collection|Tags[]
+//     */
+//    public function getTagsTask(): Collection
+//    {
+//        return $this->tagsTask;
+//    }
+//
+//    public function addTagsTask(Tags $tagsTask): self
+//    {
+//        if (!$this->tagsTask->contains($tagsTask)) {
+//            $this->tagsTask[] = $tagsTask;
+//            $tagsTask->setTaskTag($this);
+//        }
+//
+//        return $this;
+//    }
+//
+//    public function removeTagsTask(Tags $tagsTask): self
+//    {
+//        if ($this->tagsTask->contains($tagsTask)) {
+//            $this->tagsTask->removeElement($tagsTask);
+//            // set the owning side to null (unless already changed)
+//            if ($tagsTask->getTaskTag() === $this) {
+//                $tagsTask->setTaskTag(null);
+//            }
+//        }
+//
+//        return $this;
+//    }
 
-        return $this;
-    }
+
+
 }
